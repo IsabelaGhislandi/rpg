@@ -176,7 +176,8 @@ class personagem:
             if simnaojogar == 'Sim':
                  #desenrola-le fala e vai pro quebra pau de treino
                 print('teste')
-                jogoComeça(nomeraca, level)            
+                #AQUI CHAMA FUNÇÃO#
+                jogoComeça(nomeraca, level, nomeclasse)            
             elif simnaojogar == 'Não':
                     print('Você chega até aqui e diz não vai volta desde o inicio logo tá bom vai vai')
             else:
@@ -185,23 +186,26 @@ class personagem:
 
 
 
-def jogoComeça(nomeraca, level):
+def jogoComeça(nomeraca, level, nomeclasse):
     print("Jogo começou")
     nomerival = input('Escolha o nome do seu rival')
-    batalha(nomerival, nomeraca, level)
-def inimigoaleatório():
-    nomes = ["Alaric", "Beatrix", "Cedric", "Dante", "Eleanor", "Faramir", "Giselle", "Harold", "Isolde", "Jocelyn", "Leofric", "Matilda", "Niall", "Odette", "Percival", "Quillian", "Rhiannon", "Sigmund", "Thaddeus", "Ulf", "Violetta", "Wulfric", "Yseult", "Agravain", "Brynhild", "Catriona", "Dorian", "Eadric", "Fenella", "Godfrey", "Hildegarde", "Ingmar", "Jareth", "Kenelm", "Lancelot", "Morgana", "Osric", "Rowena", "Theobald", "Wilfred"]
-    nomeinimigo = random.choice(nomes)
+    batalha(nomeraca, level, nomeclasse, nomerival)
 
-def batalha(rival, level, nomeinimigo):
-    if level == 1:
-        nomeinimigo = rival
-    print(f'A batalha começou o seu inimigo é {nomeinimigo}')
+def batalha(nomeraca, level, nomeclasse, nomerival):
+    
     danoinimigo = ""
     vidainimigo = ""
     defesainimigo = ""
-    print('O que irá fazer agora: fugir, batalhar, itens')
-    acaojogador = input('...')
+    
+    if level == 1:
+        nomeinimigo = nomerival
+        
+    print(f'A batalha começou o seu inimigo é {nomeinimigo}')
+    acaojogador = input(print('O que irá fazer agora: fugir, batalhar, itens'))
+    if acaojogador in ("fugir", "f"):
+        fugir()
+    if acaojogador in ("batalhar", "itens"):
+        atacar(nomeraca, level, nomeclasse, nomeinimigo)
 
 def atacar(acaojogador, nomeraca, nomeclasse, nomeinimigo):     
     if acaojogador in ('Batalhar','batalhar','BATALHAR'):
@@ -219,4 +223,9 @@ def atacar(acaojogador, nomeraca, nomeclasse, nomeinimigo):
 
         else:
             print('ASDAS')
+
+
+def inimigoaleatório():
+    nomes = ["Alaric", "Beatrix", "Cedric", "Dante", "Eleanor", "Faramir", "Giselle", "Harold", "Isolde", "Jocelyn", "Leofric", "Matilda", "Niall", "Odette", "Percival", "Quillian", "Rhiannon", "Sigmund", "Thaddeus", "Ulf", "Violetta", "Wulfric", "Yseult", "Agravain", "Brynhild", "Catriona", "Dorian", "Eadric", "Fenella", "Godfrey", "Hildegarde", "Ingmar", "Jareth", "Kenelm", "Lancelot", "Morgana", "Osric", "Rowena", "Theobald", "Wilfred"]
+    nomeinimigo = random.choice(nomes)
          
